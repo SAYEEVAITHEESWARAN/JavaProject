@@ -1,5 +1,6 @@
 package MyPackage;
 import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Scanner;
 public class Hotels extends Items {
@@ -20,12 +21,15 @@ public class Hotels extends Items {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the hotel name:");
 		String hotelName=sc.nextLine();
-		
-		String result="";
+		boolean contains=false;
+		String temp;
 		for(int i=0;i<hotels.length;i++) {
-			result+=hotels[i];
+			temp=hotels[i];
+			if(hotelName.toUpperCase().equals(temp.toUpperCase())) {
+				contains=true;
+			}
 		}
-		if(result.contains(hotelName)) {
+		if(contains) {
 			System.out.println("Hotel Available:"+hotelName);
 			Items.item();
 			Items.price();
@@ -68,11 +72,35 @@ public class Hotels extends Items {
 		int qty=sc.nextInt();
 	}
 	
+	public void findHotel() {
+		Scanner sc=new Scanner(System.in);
+		String result = "";
+		boolean contains = false;
+		System.out.println("Enter the hotel:");
+		String hotel=sc.nextLine();
+		String temp;
+		for(int i=0;i<hotels.length;i++) {
+			temp=hotels[i];
+		if(hotel.equals(temp)) {
+			contains = true;
+			break;
+		}
+		}
+		if(contains) {
+			System.out.println("Hotel  Available:"+hotel);
+		}
+			else {
+				System.out.println("Hotel Not Available:"+hotel);
+			}
+		}
+
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Hotels hotelList=new Hotels();
 		hotelList.getData(0, 0);
+//		hotelList.findHotel();
 	}
 
 }
